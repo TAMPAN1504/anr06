@@ -189,7 +189,7 @@ nav ul li, a{
     place-items: center;
     transition: 1s;
 }
-img{
+.gallery-section .container .flipbook img{
     box-shadow: 0px 0px 20px rgba(255, 173, 218, 0.5);
     width: 50%;
     aspect-ratio: 3/4;
@@ -207,7 +207,8 @@ img:hover{
 .gallery-section .container .flipbook div{
     position: absolute;
     z-index: -1;
-    padding: 20px;
+    padding: 10px;
+    border-radius: 0 1rem 1rem 0;
     width: 50%;
     aspect-ratio: 3/4;
     background-color: var(--main-color);
