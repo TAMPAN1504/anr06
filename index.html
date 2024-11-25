@@ -6,6 +6,7 @@
         <title>Running Page</title>
         <link rel="stylesheet" href="style.css" />
         <script src="main.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     </head>
 
     <body>
@@ -59,6 +60,7 @@
 
         <section class="gallery-section">
             <div class="container">
+
                 <div class="flipbook">
                     <img src="assets/img/hero-card.jpg" alt="" />
                     <div>
@@ -72,9 +74,46 @@
                             jokes
                         </p>
                     </div>
-                    
+                </div>
+
+                <div class="music-box">
+                    <div class="title">
+                        <img src="assets/img/love-prop.png" alt="">
+                        <h1>Music About You</h1>
+                        <img src="assets/img/love-prop.png" alt="">
+                        
+                    </div>
+
+                    <div class="img-container">
+                        <img src="assets/img/hero-card.jpg" alt="Gambar 1" onclick="dewa19()">
+                        <img src="assets/img/hero-card.jpg" alt="Gambar 1">
+                        <img src="assets/img/hero-card.jpg" alt="Gambar 1">
+                        <img src="assets/img/hero-card.jpg" alt="Gambar 1">
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <section class="lightbox" style="display: none;">
+            <div class="lightbox">
+                <span class="closeBtn">&times;</span>
+                <img src="assets/img/hero-card.jpg" alt="" id="lightboxImg" data-music="">
+        
+                <div class="judul">
+                    <p style=" font-weight: 700;">Aku Milikmu</p>
+                    <p style="font-size: 1.3rem; position: relative; bottom: 5px; ; color: rgb(238, 238, 238);">Dewa 19</p>
+                    <input type="range" value="0" id="progress">
+                </div>
+        
+                <audio id="song">
+                    <source src="assets/audio/Dewa 19 - Aku Milikmu _ Official Video - Aquarius Musikindo (youtube).mp3" type="audio/mpeg">
+                </audio>
+        
+                <div class="controls">
+                    <div class="prev"><i class="fa-solid fa-backward"></i></div>
+                    <div class="play" onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                    <div class="next"><i class="fa-solid fa-forward"></i></div>
+                </div>
         </section>
     </body>
 </html>
