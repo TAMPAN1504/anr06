@@ -268,7 +268,7 @@ nav ul li, a{
     height: 100%;
     background-image: linear-gradient(to top, rgba(245, 40, 145, 1), rgba(255, 255, 255, 0.5));
     justify-content: center;
-    display: flex;
+    display: none;
     align-items: center;
     position: fixed;
     flex-direction: column;

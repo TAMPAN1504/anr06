@@ -17,61 +17,61 @@ document.querySelector(".submitBtn").addEventListener("click", function(){
 })
 
 
-// MUSIC FUNC
-let progress = document.getElementById("progress");
-        let song = document.getElementById("song");
-        let ctrlIcon = document.getElementById("ctrlIcon");
+// // MUSIC FUNC
+// let progress = document.getElementById("progress");
+//     let song = document.getElementById("song");
+//         let ctrlIcon = document.getElementById("ctrlIcon");
 
-        song.onloadedmetadata = function(){
-            progress.max = song.duration;
-            progress.value = song.currentTime;
-        }
+//         song.onloadedmetadata = function(){
+//             progress.max = song.duration;
+//             progress.value = song.currentTime;
+//         }
 
-        function playPause(){
-            if(ctrlIcon.classList.contains("fa-pause")){
-                song.pause();
-                ctrlIcon.classList.remove("fa-pause");
-                ctrlIcon.classList.add("fa-play");
+//         function playPause(){
+//             if(ctrlIcon.classList.contains("fa-pause")){
+//                 song.pause();
+//                 ctrlIcon.classList.remove("fa-pause");
+//                 ctrlIcon.classList.add("fa-play");
 
-            }
-            else {
-                song.play();
-                ctrlIcon.classList.add("fa-pause");
-                ctrlIcon.classList.remove("fa-play");
-            }
-        }
+//             }
+//             else {
+//                 song.play();
+//                 ctrlIcon.classList.add("fa-pause");
+//                 ctrlIcon.classList.remove("fa-play");
+//             }
+//         }
 
-        if(song.play()){
-            setInterval(()=>{
-                progress.value = song.currentTime;
-            },500)
-        }
+//         if(song.play()){
+//             setInterval(()=>{
+//                 progress.value = song.currentTime;
+//             },500)
+//         }
 
-        progress.onchange = function(){
-            song.play();
-            song.currentTime = progress.value;
-            ctrlIcon.classList.add("fa-pause");
-            ctrlIcon.classList.remove("fa-play");
-        }
+//         progress.onchange = function(){
+//             song.play();
+//             song.currentTime = progress.value;
+//             ctrlIcon.classList.add("fa-pause");
+//             ctrlIcon.classList.remove("fa-play");
+//         }
 
 
-// Fungsi Lightbox
-let lightbox = document.querySelector(".lightbox");
-let lightboxImg = document.querySelectorAll(".lightbox img");
-let controls = document.querySelector(".controls");
-lightbox.addEventListener("click", (event)=> {
-    if(event.target !== lightboxImg){
-        lightbox.style.display = "none";
-        song.pause();
-   }else if(event.target !== controls){
-    lightbox.style.display = "none";
-    song.pause();
-}
-})
-// Lightbox Dewa
-let dewa19 = () =>{
-    document.querySelector(".lightbox").style.display = "block";
-    song.play();
-    ctrlIcon.classList.remove("fa-play");
-    ctrlIcon.classList.add("fa-pause");
-}
+// // Fungsi Lightbox
+// let lightbox = document.querySelector(".lightbox");
+// let lightboxImg = document.querySelectorAll(".lightbox img");
+// let controls = document.querySelector(".controls");
+// lightbox.addEventListener("click", (event)=> {
+//     if(event.target !== lightboxImg){
+//         lightbox.style.display = "none";
+//         song.pause();
+//    }else if(event.target !== controls){
+//     lightbox.style.display = "none";
+//     song.pause();
+// }
+// })
+// // Lightbox Dewa
+// let dewa19 = () =>{
+//     document.querySelector(".lightbox").style.display = "flex";
+//     song.play();
+//     ctrlIcon.classList.remove("fa-play");
+//     ctrlIcon.classList.add("fa-pause");
+// }
