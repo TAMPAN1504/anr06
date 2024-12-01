@@ -241,13 +241,13 @@ nav ul li, a{
     width: 90px;
 }
 
-.music-box .img-container{
+.music-box .gallery{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
-.img-container img{
+.gallery img{
     width: 150px;
     aspect-ratio: 6/4;
     object-position: 50% 10%;
@@ -256,7 +256,7 @@ nav ul li, a{
     border-radius: 8px;
     transition: transform 0.3s, filter 0.3s;
 }
-.img-container img:hover{
+.gallery img:hover{
     transform: scale(1.10);
     filter: grayscale(0);
 }

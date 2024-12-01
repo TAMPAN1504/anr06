@@ -46,13 +46,6 @@
             max-width: 90%;
             max-height: 90%;
         }
-        .lightbox h1 {
-            color: white; /* Warna teks judul */
-            position: absolute; /* Agar judul bisa ditempatkan di atas gambar */
-            top: 20px; /* Jarak dari atas */
-            left: 50%; /* Posisikan di tengah secara horizontal */
-            transform: translateX(-50%); /* Pindahkan ke kiri setengah lebar elemen */
-        }
         .close-btn {
             position: absolute;
             top: 20px;
@@ -68,28 +61,27 @@
 <h1>Pemutar Musik Interaktif</h1>
 
 <div class="gallery">
-    <img src="cover1.jpg" alt="Lagu 1" data-index="0" onclick="openLightbox(this)">
+    <img src="assets/img/hero-card.jpg" alt="Lagu 1" data-index="0" onclick="openLightbox(this)">
     <img src="cover2.jpg" alt="Lagu 2" data-index="1" onclick="openLightbox(this)">
     <img src="cover3.jpg" alt="Lagu 3" data-index="2" onclick="openLightbox(this)">
     <img src="cover4.jpg" alt="Lagu 4" data-index="3" onclick="openLightbox(this)">
 </div>
 
-<audio id="audioPlayer" controls>
+<audio id="audioPlayer">
     <source id="audioSource" src="" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
 <div class="lightbox" id="lightbox">
     <span class="close-btn" onclick="closeLightbox()">&times;</span>
-    <h1 id="lightboxTitle"></h1> <!-- Judul lagu akan ditampilkan di sini -->
     <img id="lightboxImage" src="" alt="">
 </div>
 
 <script>
     // Daftar lagu sebagai objek
     const songs = [
-        { title: "Dewa 19", src: "assets/audio/assets/audio/assets/audio/akumilikmu.mp3", cover: "cover1.jpg" },
-        { title: "Lagu 2", src: "lagu2.mp3", cover: "cover2.jpg" },
+        { title: "Lagu 1", src: "assets/audio/akumilikmu.mp3", cover: "cover1.jpg" },
+        { title: "Lagu 2", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3", cover: "cover2.jpg" },
         { title: "Lagu 3", src: "lagu3.mp3", cover: "cover3.jpg" },
         { title: "Lagu 4", src: "lagu4.mp3", cover: "cover4.jpg" }
     ];
@@ -117,11 +109,8 @@
     function openLightbox(image) {
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxTitle = document.getElementById('lightboxTitle');
-
+        
         lightboxImage.src = image.src; // Set gambar di lightbox
-        const index = image.getAttribute('data-index'); // Ambil indeks dari atribut data
-        lightboxTitle.innerText = songs[index].title; // Set judul lagu di lightbox
         lightbox.style.display = 'flex'; // Tampilkan lightbox
     }
 

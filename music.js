@@ -1,8 +1,8 @@
 const dataLagu = [
     { title: "Aku milikmu", artis:"Dewa 19", src: "assets/audio/akumilikmu.mp3" },
+    { title: "Terima kasih", artis:"Hal", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" },
     { title: "Hal", artis:"HAL", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" },
-    { title: "Hal", artis:"HAL", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" },
-    { title: "Hal", artis:"HAL", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" },
+    { title: "Hal", artis:"HAL", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" }
 ];
 
 const laguPlayer = document.getElementById("laguPlayer");
@@ -16,12 +16,12 @@ function loadSong(index) {
 }
 
 // Event listener untuk gambar di galeri
-const GalleryImages = document.querySelectorAll(".image-container img");
+const GalleryImages = document.querySelectorAll(".music-box .gallery img");
 GalleryImages.forEach((image) => {
     image.addEventListener("click", () => {
         const index = image.getAttribute("data-index");
         loadSong(index); // Memuat dan memainkan lagu
-        openLightbox(image); // Kemudian buka lightbox
+        openLightbox(image)
     });
 });
 
