@@ -1,5 +1,5 @@
 const dataLagu = [
-    { title: "Aku milikmu", artis:"Dewa 19", src: "assets/audio/akumilikmu.mp3" },
+    { title: "Aku Milikmu", artis:"Dewa 19", src: "assets/audio/akumilikmu.mp3" },
     { title: "Terima kasih", artis:"Hal", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" },
     { title: "Hal", artis:"HAL", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" },
     { title: "Hal", artis:"HAL", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" }
@@ -7,6 +7,8 @@ const dataLagu = [
 
 const laguPlayer = document.getElementById("laguPlayer");
 const laguSource = document.getElementById("laguSource");
+const ctrlIcon = document.getElementById("ctrlIcon");
+const progress = document.getElementById("progress")
 
 // Fungsi untuk memuat dan memainkan lagu berdasarkan indeks
 function loadSong(index) {
@@ -30,6 +32,8 @@ function openLightbox(image) {
     const lightboxImage = document.getElementById("lightboxImg"); // Perbaiki pemilihan elemen
     const Judul = document.getElementById("judulLagu");
     const Artis = document.getElementById("artisLagu");
+    ctrlIcon.classList.remove("fa-play");
+    ctrlIcon.classList.add("fa-pause");
 
     lightboxImage.src = image.src; // Set gambar di lightbox
     
@@ -42,25 +46,36 @@ function openLightbox(image) {
 
 function closeLightbox() {
     const lightbox = document.querySelector(".lightbox");
+    laguPlayer.pause();
     lightbox.style.display = "none"; // Sembunyikan lightbox
-}
+};
 
-function playPause() {
-    if (laguPlayer.paused) {
-        laguPlayer.play();
-        document.getElementById("ctrlIcon").classList.remove('fa-play');
-        document.getElementById("ctrlIcon").classList.add('fa-pause');
-    } else {
+const playPause = () =>{
+    if(ctrlIcon.classList.contains("fa-pause")){
         laguPlayer.pause();
-        document.getElementById("ctrlIcon").classList.remove('fa-pause');
-        document.getElementById("ctrlIcon").classList.add('fa-play');
+        ctrlIcon.classList.remove("fa-pause");
+        ctrlIcon.classList.add("fa-play");
+    }else{
+        laguPlayer.play();
+        ctrlIcon.classList.remove("fa-play");
+        ctrlIcon.classList.add("fa-pause");
     }
-}
+};
 
-function prevSong() {
-    // Logika untuk lagu sebelumnya
-}
+laguPlayer.onloadedmetadata = function(){
+    progress.max = laguPlayer.duration;
+    progress.value = laguPlayer.currentTime;
+};
 
-function nextSong() {
-    // Logika untuk lagu berikutnya
-}
+if(laguPlayer.play()){
+    setInterval(()=>{
+        progress.value = laguPlayer.currentTime;
+    }, 500)
+};
+
+progress.onchange = function(){
+    laguPlayer.play();
+    laguPlayer.currentTime = progress.value;
+    ctrlIcon.classList.add("fa-pause");
+    ctrlIcon.classList.remove("fa-play");
+};
