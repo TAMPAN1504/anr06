@@ -1,8 +1,8 @@
 const dataLagu = [
     { title: "Aku Milikmu", artis:"Dewa 19", src: "assets/audio/akumilikmu.mp3" },
     { title: "Terima kasih", artis:"Hal", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" },
-    { title: "Hal", artis:"HAL", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" },
-    { title: "Hal", artis:"HAL", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3" }
+    { title: "I Wanna Be Yours", artis:"Arctic Monkeys", src: "assets/audio/I Wanna Be Yours - Arctic Monkeys (youtube).mp3" },
+    { title: "Sempurna", artis:"Andra And The Backbone", src: "assets/audio/Andra And The Backbone - Sempurna (Official Music Video) - GP Records (youtube).mp3" }
 ];
 
 const laguPlayer = document.getElementById("laguPlayer");

@@ -219,7 +219,6 @@ nav ul li, a{
     background-color: var(--main-color);
 }
 .music-box{
-    height: 50%;
     color: black;
     display: flex;
     flex-direction: column;
@@ -317,4 +316,26 @@ nav ul li, a{
     display: flex;
     align-items: center ;
     justify-content: center;
+}
+
+.readme{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 90%;
+
+}
+
+.readme img{
+    width: 90px;
+}
+
+.readme .readmeItem{
+    width: 100%;
+    font-size: 0.8rem;
+    background-color: var(--main-color);
+    padding: 3px;
+    border-radius: 10px;
+    border: 2px solid black;
 }
