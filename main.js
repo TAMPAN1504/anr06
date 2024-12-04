@@ -16,62 +16,19 @@ document.querySelector(".submitBtn").addEventListener("click", function(){
     }
 })
 
+// Paper Message Function
 
-// // MUSIC FUNC
-// let progress = document.getElementById("progress");
-//     let song = document.getElementById("song");
-//         let ctrlIcon = document.getElementById("ctrlIcon");
+document.querySelector(".readmeItem").addEventListener("click", () =>{
+    document.querySelector("#paperSfx").load();
+    document.querySelector("#paperSfx").play();
+    document.querySelector(".readmeMsg").style.display = "flex";
+});
 
-//         song.onloadedmetadata = function(){
-//             progress.max = song.duration;
-//             progress.value = song.currentTime;
-//         }
-
-//         function playPause(){
-//             if(ctrlIcon.classList.contains("fa-pause")){
-//                 song.pause();
-//                 ctrlIcon.classList.remove("fa-pause");
-//                 ctrlIcon.classList.add("fa-play");
-
-//             }
-//             else {
-//                 song.play();
-//                 ctrlIcon.classList.add("fa-pause");
-//                 ctrlIcon.classList.remove("fa-play");
-//             }
-//         }
-
-//         if(song.play()){
-//             setInterval(()=>{
-//                 progress.value = song.currentTime;
-//             },500)
-//         }
-
-//         progress.onchange = function(){
-//             song.play();
-//             song.currentTime = progress.value;
-//             ctrlIcon.classList.add("fa-pause");
-//             ctrlIcon.classList.remove("fa-play");
-//         }
-
-
-// // Fungsi Lightbox
-// let lightbox = document.querySelector(".lightbox");
-// let lightboxImg = document.querySelectorAll(".lightbox img");
-// let controls = document.querySelector(".controls");
-// lightbox.addEventListener("click", (event)=> {
-//     if(event.target !== lightboxImg){
-//         lightbox.style.display = "none";
-//         song.pause();
-//    }else if(event.target !== controls){
-//     lightbox.style.display = "none";
-//     song.pause();
-// }
-// })
-// // Lightbox Dewa
-// let dewa19 = () =>{
-//     document.querySelector(".lightbox").style.display = "flex";
-//     song.play();
-//     ctrlIcon.classList.remove("fa-play");
-//     ctrlIcon.classList.add("fa-pause");
-// }
+// fungsi ketika paper diklik di luar area gambar;
+document.querySelector(".readmeMsg").addEventListener("click", () =>{
+    if (event.target !== document.querySelector(".paper-bg")) {
+        document.querySelector("#paperSfx").load();
+        document.querySelector("#paperSfx").play();
+        document.querySelector(".readmeMsg").style.display = "none";
+    }
+    });

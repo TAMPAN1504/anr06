@@ -5,6 +5,14 @@
     --dark-color: #9b4373;
 }
 
+@font-face {
+    font-family: Reenie Beanie;
+    src: url(assets/font/0b30a44b5eb1a594-s.p.woff2) format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
 *{
     margin: 0; padding: 0;
     box-sizing: border-box;
@@ -124,7 +132,7 @@ header{
 nav{
     position: sticky;
     top: 0;
-    z-index: 10000;
+    z-index: 1000;
     width: 100vw;
     display: flex;
     background-color: white;
@@ -338,4 +346,30 @@ nav ul li, a{
     padding: 3px;
     border-radius: 10px;
     border: 2px solid black;
+}
+
+.readmeMsg{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.readmeMsg .paper-bg{
+    background-image: url(assets/img/paper-texture.png);
+    height: 50%;
+    width: 80%;
+    position: fixed;
+    font-size: 27px;
+    color: var(--dark-color);
+    padding: 10px;
+    line-height: 20px;
+    font-family: Reenie Beanie;
+    text-align: start;
+    border-radius: 5px;
 }
