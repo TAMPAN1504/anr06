@@ -219,12 +219,15 @@ nav ul li, a{
 .gallery-section .container .flipbook div{
     position: absolute;
     z-index: -1;
+    border-left: 3px solid rgb(0, 0, 0);
     padding: 10px;
     border-radius: 0 1rem 1rem 0;
     width: 50%;
     aspect-ratio: 3/4;
-    font-size: 0.8rem;
-    background-color: var(--main-color);
+    font-size: 12px;
+    line-height: 14px;
+    background-image: url(assets/img/paper-texture.png);
+    color: var(--dark-color);
 }
 .music-box{
     color: black;
@@ -245,6 +248,7 @@ nav ul li, a{
     display: flex;
     font-weight: ;
     align-items: center;
+    width: 350px;
     justify-content: center;
 }
 .music-box .title img{
@@ -344,7 +348,7 @@ nav ul li, a{
 
 .readme .readmeItem{
     width: 100%;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     background-color: var(--main-color);
     padding: 3px;
     border-radius: 10px;
@@ -368,11 +372,16 @@ nav ul li, a{
     height: 50%;
     width: 80%;
     position: fixed;
-    font-size: 27px;
     color: var(--dark-color);
     padding: 10px;
-    line-height: 20px;
-    font-family: Reenie Beanie;
     text-align: start;
     border-radius: 5px;
+}
+
+.readmeMsg .paper-bg p{
+    font-family: Reenie Beanie, sans-serif;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 20px;
+
 }
