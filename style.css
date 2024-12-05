@@ -127,7 +127,7 @@ header{
     background-color: var(--main-color);
     font-size: 0.8rem;
     padding: 10px;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: 'Gloria Hallelujah', 'Comic Sans MS', 'Comic Sans', sans-serif;
 }
 nav{
     position: sticky;
@@ -236,11 +236,14 @@ nav ul li, a{
     background-color: white;
     border-radius: 20px;
     width: 90vw;
+    font-size: 14px;
+    font-family: 'Gloria Hallelujah';
+    font-weight: 800;
     color: var(--dark-color);
-    font-family: 'Comic Sans MS';
 }
 .music-box .title{
     display: flex;
+    font-weight: ;
     align-items: center;
     justify-content: center;
 }
