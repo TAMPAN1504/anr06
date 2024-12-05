@@ -127,7 +127,7 @@ header{
     background-color: var(--main-color);
     font-size: 0.8rem;
     padding: 10px;
-    font-family: 'Comic sans MS';
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
 }
 nav{
     position: sticky;
