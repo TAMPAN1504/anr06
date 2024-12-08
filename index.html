@@ -16,6 +16,7 @@
         rel="stylesheet">
     <link rel="preload" href="assets/font/0b30a44b5eb1a594-s.p.woff2" as="font" crossorigin="anonymous"
         data-next-font="size-adjust" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -70,7 +71,7 @@
         <div class="container">
 
             <div class="flipbook">
-                <img src="assets/img/hero-card.jpg" alt="" />
+                <img src="assets/img/coverFlipbook.jpg" alt="" />
                 <div>
                     <h2>MY POV ABOUT YOU</h2>
                     <p style="font-family: Reenie Beanie; font-size: 1rem;">
@@ -101,6 +102,10 @@
                         onclick="openLightbox(this)">
                     <img src="assets/img/313431316_637130961402579_1084767403111210119_n.jpg" alt="Gambar 4"
                         data-index="3" onclick="openLightbox(this)">
+                    <img src="assets/img/41696706_1983810858376420_8842200681823301833_n.jpg" alt="Gambar 4"
+                        data-index="4" onclick="openLightbox(this)">
+                    <img src="assets/img/Gambar WhatsApp 2024-12-08 pukul 10.50.25_5bf69620.jpg" alt="Gambar 4"
+                        data-index="5" onclick="openLightbox(this)">
                 </div>
 
                 <audio id="laguPlayer">
@@ -178,7 +183,7 @@
                     <p style="color: rgba(255, 255, 255, 0.7);">Boy Pablo</p>
                     <div class="actionBtn">
                         <i class="fa-solid fa-backward"></i>
-                        <i class="fa-solid fa-play"></i>
+                        <i class="fa-solid fa-play" id="playIcon" onclick="playSpotify()"></i>
                         <i class="fa-solid fa-forward"></i>
                     </div>
                 </div>
@@ -187,7 +192,11 @@
                     <div class="plus">
                     <i class="fa-solid fa-plus" style="font-size: 16px; border: 2px solid white; border-radius: 20px; padding: 4px 5px; display: flex; justify-content: center; align-items: center;"></i>
                     </div>
+                    <div class="spotifyIcon">
+                        <i class="fa fa-spotify fa-2x"></i>
+                    </div>
                 </div>
+                <audio id="boyPablo" src="assets/audio/Boy Pablo - Honey - David Dean Burkhart (youtube).mp3" loop></audio>
             </div>
     </section>
 

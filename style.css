@@ -114,6 +114,7 @@ body{
 .home-section{
     width: 100vw;
     height: 100vh;
+    display: flex;
     background: url(assets/img/bg-section.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -181,8 +182,6 @@ nav ul li, a{
 }
 .gallery-section{
     width: 100vw;
-    height: 100vh;
-    display: flex;
     justify-content: center;
     background-image: url(assets/img/bg-gallery.jpeg);
 
@@ -423,7 +422,7 @@ nav ul li, a{
 }
 
 .spotifyCard{
-    background-color: rgb(203, 127, 138);
+    background-image: linear-gradient(to top, rgba(245, 40, 145, 1), rgba(180, 180, 180, 0.5));
     display: flex;
     border-radius: 10px;
     z-index: 2;
@@ -464,4 +463,13 @@ nav ul li, a{
     font-size: 12px;
     gap: 10px;
     color: rgba(255, 255, 255, 0.8);
+}
+
+.spotifyCard .spotifyIcon{
+    height: 70px;
+    transform: translateX(10px);
+}
+
+.spotifyCard .spotifyIcon i{
+    color: white;
 }
