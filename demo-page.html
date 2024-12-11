@@ -3,123 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pemutar Musik Interaktif dengan Lightbox</title>
+    <title>Kuis Sederhana</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: white;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
             text-align: center;
         }
-        .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+
+        .question {
+            margin-bottom: 20px;
         }
-        .gallery img {
-            width: 100px;
-            height: auto;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: transform 0.3s;
+
+        .options {
+            list-style-type: none;
+            padding: 0;
         }
-        .gallery img:hover {
-            transform: scale(1.1);
-        }
-        audio {
-            margin-top: 20px;
-        }
-        /* CSS untuk Lightbox */
-        .lightbox {
-            display: none; /* Sembunyikan lightbox secara default */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
+
+        .options li {
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Kuis Sederhana</h1>
+        <div id="quiz-container"></div>
+        <button id="submit-btn">Kirim Jawaban</button>
+        <div id="result-container"></div>
+    </div>
 
-<h1>Pemutar Musik Interaktif</h1>
+    <script>
+        // Data kuis yang berisi pertanyaan dan jawaban
+        const quizData = [
+            {
+                question: "Siapa penemu lampu pijar?",
+                a: "Alexander Graham Bell",
+                b: "Thomas Edison",
+                c: "Nikola Tesla",
+                d: "Albert Einstein",
+                correct: "b" // Jawaban yang benar
+            },
+            {
+                question: "Apa ibu kota Indonesia?",
+                a: "Jakarta",
+                b: "Bandung",
+                c: "Surabaya",
+                d: "Medan",
+                correct: "a" // Jawaban yang benar
+            },
+            {
+                question: "Berapa jumlah planet di tata surya?",
+                a: "7",
+                b: "8",
+                c: "9",
+                d: "10",
+                correct: "b" // Jawaban yang benar
+            }
+        ];
 
-<div class="gallery">
-    <img src="assets/img/hero-card.jpg" alt="Lagu 1" data-index="0" onclick="openLightbox(this)">
-    <img src="cover2.jpg" alt="Lagu 2" data-index="1" onclick="openLightbox(this)">
-    <img src="cover3.jpg" alt="Lagu 3" data-index="2" onclick="openLightbox(this)">
-    <img src="cover4.jpg" alt="Lagu 4" data-index="3" onclick="openLightbox(this)">
-</div>
+        // Mengambil elemen dari DOM
+        const quizContainer = document.getElementById('quiz-container'); // Tempat untuk menampilkan pertanyaan
+        const submitBtn = document.getElementById('submit-btn'); // Tombol untuk mengirim jawaban
+        const resultContainer = document.getElementById('result-container'); // Tempat untuk menampilkan hasil
 
-<audio id="audioPlayer">
-    <source id="audioSource" src="" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+        let currentQuestionIndex = 0; // Indeks pertanyaan saat ini
+        let score = 0; // Skor pengguna
 
-<div class="lightbox" id="lightbox">
-    <span class="close-btn" onclick="closeLightbox()">&times;</span>
-    <img id="lightboxImage" src="" alt="">
-</div>
+        // Fungsi untuk memuat pertanyaan ke dalam kuis
+        function loadQuiz() {
+            const currentQuizData = quizData[currentQuestionIndex]; // Mengambil data pertanyaan saat ini
+            
+            // Mengisi konten kuis dengan pertanyaan dan pilihan jawaban
+            quizContainer.innerHTML = `
+                <div class="question">${currentQuizData.question}</div>
+                <ul class="options">
+                    <li><input type="radio" name="answer" value="a"> ${currentQuizData.a}</li>
+                    <li><input type="radio" name="answer" value="b"> ${currentQuizData.b}</li>
+                    <li><input type="radio" name="answer" value="c"> ${currentQuizData.c}</li>
+                    <li><input type="radio" name="answer" value="d"> ${currentQuizData.d}</li>
+                </ul>
+            `;
+        }
 
-<script>
-    // Daftar lagu sebagai objek
-    const songs = [
-        { title: "Lagu 1", src: "assets/audio/akumilikmu.mp3", cover: "cover1.jpg" },
-        { title: "Lagu 2", src: "assets/audio/HAL - terima kasih (Official Lyric Video) - halstage (youtube).mp3", cover: "cover2.jpg" },
-        { title: "Lagu 3", src: "lagu3.mp3", cover: "cover3.jpg" },
-        { title: "Lagu 4", src: "lagu4.mp3", cover: "cover4.jpg" }
-    ];
+        // Fungsi untuk mendapatkan jawaban yang dipilih oleh pengguna
+        function getSelectedAnswer() {
+            const answers = document.querySelectorAll('input[name="answer"]'); // Mengambil semua input radio
+            
+            // Memeriksa setiap input radio untuk melihat mana yang dipilih
+            for (const answer of answers) {
+                if (answer.checked) {
+                    return answer.value; // Mengembalikan nilai jawaban yang dipilih
+                }
+            }
+            
+            return null; // Jika tidak ada jawaban yang dipilih, kembalikan null
+        }
 
-    const audioPlayer = document.getElementById('audioPlayer');
-    const audioSource = document.getElementById('audioSource');
-
-    // Fungsi untuk memuat dan memainkan lagu berdasarkan indeks
-    function loadSong(index) {
-        audioSource.src = songs[index].src; // Set sumber audio
-        audioPlayer.load(); // Muat sumber audio
-        audioPlayer.play(); // Mainkan lagu
-    }
-
-    // Event listener untuk gambar di galeri
-    const galleryImages = document.querySelectorAll('.gallery img');
-    galleryImages.forEach((image) => {
-        image.addEventListener('click', () => {
-            const index = image.getAttribute('data-index'); // Ambil indeks dari atribut data
-            loadSong(index); // Panggil fungsi untuk memuat lagu
+        // Menambahkan event listener pada tombol kirim jawaban
+        submitBtn.addEventListener('click', () => {
+            const answer = getSelectedAnswer(); // Mendapatkan jawaban yang dipilih
+            
+            if (answer) { // Memeriksa apakah ada jawaban yang dipilih
+                if (answer === quizData[currentQuestionIndex].correct) { // Memeriksa apakah jawaban benar
+                    score++; // Menambah skor jika jawaban benar
+                }
+                
+                currentQuestionIndex++; // Pindah ke pertanyaan berikutnya
+                
+                if (currentQuestionIndex < quizData.length) { // Memeriksa apakah masih ada pertanyaan tersisa
+                    loadQuiz(); // Memuat pertanyaan berikutnya
+                } else {
+                    // Menampilkan hasil akhir setelah semua pertanyaan dijawab
+                    resultContainer.innerHTML = `<h2>Anda mendapatkan ${score} dari ${quizData.length} jawaban benar!</h2>`;
+                    submitBtn.style.display = 'none'; // Menyembunyikan tombol kirim setelah kuis selesai
+                    quizContainer.style.display = 'none'; // Menyembunyikan kontainer kuis setelah kuis selesai
+                }
+            } else {
+                alert("Silakan pilih jawaban!"); // Peringatan jika tidak ada jawaban yang dipilih
+            }
         });
-    });
 
-    // Fungsi untuk membuka lightbox
-    function openLightbox(image) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightboxImage');
-        
-        lightboxImage.src = image.src; // Set gambar di lightbox
-        lightbox.style.display = 'flex'; // Tampilkan lightbox
-    }
-
-    // Fungsi untuk menutup lightbox
-    function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.style.display = 'none'; // Sembunyikan lightbox
-    }
-</script>
-
+        // Memuat pertanyaan pertama saat halaman dimuat
+        loadQuiz();
+    </script>
 </body>
 </html>
