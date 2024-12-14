@@ -115,7 +115,7 @@ body{
 .home-section{
     width: 100vw;
     height: 100vh;
-    display: flex;
+    display: none;
     background: url(assets/img/bg-section.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -177,6 +177,8 @@ nav ul li, a{
 }
 .home-section .container .info-card img{
     width: 80px;
+    height: 80px;
+    object-fit: cover;
     border: 3px solid rgb(94, 51, 60);
     border-radius: 40px;
     transform: translateY(-10px);
@@ -184,7 +186,7 @@ nav ul li, a{
 .gallery-section{
     width: 100vw;
     justify-content: center;
-    display: flex;
+    display: none;
     background-image: url(assets/img/bg-gallery.jpeg);
 
 }
@@ -392,7 +394,7 @@ nav ul li, a{
 
 /* Confession */
 .confession-section{
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -524,9 +526,8 @@ nav ul li, a{
 .povSection{
     background-image: url(assets/img/589de158-8f51-4b92-9be9-82fc7c0c8584.jpeg);
     background-size: cover;
-    height: 100vh;
     width: 100vw;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -535,6 +536,7 @@ nav ul li, a{
     width: 90vw;
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
     
 }
 
@@ -553,6 +555,7 @@ nav ul li, a{
 .aboutYou-card img{
     width: 95%;
     height: 150px;
+    object-fit: cover;
     border-radius: 5px;
 }
 
@@ -643,4 +646,55 @@ nav ul li, a{
 .aboutYou-card .elementAbout img{
     width: 50px;
     height: 50px;
+}
+
+.myWorld{
+    background-image: url(assets/img/6cc9eaba-3044-4a12-a292-e7bd3fa8e636.jpeg);
+    height: 100vh;
+    background-size: cover;
+    width: 100vw;
+}
+
+
+.myWorld {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    color: black;
+}
+
+.container {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+    padding: 10px;
+    flex-direction: column;
+    border: 1px solid var(--main-color);
+}
+
+.myWorld .container h1 {
+    color: #2c3e50;
+}
+
+
+.answer-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.answer-btn:hover {
+    background-color: #2980b9;
 }

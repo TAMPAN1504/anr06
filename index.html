@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css" />
     <script src="music.js" defer></script>
     <script src="main.js" defer></script>
+    <script src="quiz.js" defer></script>
+    <script src="quiz_api.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,12 +53,12 @@
     <section class="home-section">
         <div class="container">
             <div class="info-card">
-                <img src="assets/img/hero-card.jpg" alt="" />
+                <img src="assets/img/home-pp.jpg" alt="" />
                 <h1>Hello There!</h1>
                 <p>
                     Hai annonymous bagaimana hari mu? baik? Alhamdullilah
-                    kalo baik. web ini aku buat dengan program sederhana
-                    saja dan ditujukan untuk diri mu.. ini sebagai bentuk
+                    kalo baik. web ini aku buat
+                    dan ditujukan untuk diri mu.. ini sebagai bentuk
                     apresiasi untuk dirimu yang sudah berusaha menjadi lebih
                     baik, aku kagum dengan diri mu dan ingin tau lebih
                     banyak tentang diri mu :)
@@ -94,8 +96,8 @@
                 </div>
 
                 <div class="gallery">
-                    <img src="assets/img/Gambar WhatsApp 2024-12-11 pukul 00.10.36_f4099cb1.jpg" alt="Gambar 1" style="object-position: 50% 40%;" data-index="0"
-                        onclick="openLightbox(this)">
+                    <img src="assets/img/Gambar WhatsApp 2024-12-11 pukul 00.10.36_f4099cb1.jpg" alt="Gambar 1"
+                        style="object-position: 50% 40%;" data-index="0" onclick="openLightbox(this)">
                     <img src="assets/img/IMG_5043.jpg" alt="Gambar 2" style="object-position: 50% 55%;" data-index="1"
                         onclick="openLightbox(this)">
                     <img src="assets/img/Screenshot 2024-12-03 213656.png" alt="Gambar 3" data-index="2"
@@ -144,7 +146,8 @@
                 <div class="readmeMsg">
                     <div class="paper-bg">
                         <p>Hello again.. terima kasih ya udah hadir dalam lagu ini karena setiap aku dengar lagu ini
-                            keingat diri mu aja sih.. <br> disclaimer aku punya akses terbatas untuk mengakses foto foto
+                            mengingatkan ku akan kehadiran mu lewat lagu ini.. <br> disclaimer aku punya akses terbatas
+                            untuk mengakses foto foto
                             mu dan semua foto yang aku cantumkan disini ku dapatkan lewat hasil fotografi dan dari
                             sosial media mu @aurnydhini
                             dan mohon maaf untuk kualitas foto nya yang kurang bagus <br>
@@ -266,11 +269,12 @@
                 <img src="assets/img/43c41809-7d1d-4788-ba4f-0976add0d126.jpeg" alt="">
                 <div class="header">
                     <div class="imgWrapper">
-                        <img src="assets/img/313431316_637130961402579_1084767403111210119_n.jpg" alt="">
+                        <img src="assets/img/aurellabout.jpg" alt="">
                     </div>
                     <div class="judul">
                         <h1>Things i like about you
-                        <i class="fa fa-search" style="transform: translateX(10px);"></i></h1>
+                            <i class="fa fa-search" style="transform: translateX(10px);"></i>
+                        </h1>
                     </div>
                 </div>
                 <div class="favItem">
@@ -288,7 +292,7 @@
                     </div>
                 </div>
                 <div class="paragraph">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam repellendus ea id, quod tempora tempore perferendis optio. Quas reiciendis quibusdam soluta animi fugiat laborum, eligendi eveniet consectetur vitae? Sint eligendi doloremque voluptas architecto veniam fugit amet libero optio iste? Rem!</p>
+                    <p>Aku ingin kamu tahu betapa berartinya dirimu bagiku. Setiap kali aku melihatmu, aku merasa beruntung bisa mengenal seseorang yang seindah dan sekuat dirimu. Walaupun aku hanya bisa melihat mu dari kejauhan, itu bukan masalah bagiku. Kamu sudah lebih dari cukup. Kecantikanmu bukan hanya dari wajahmu, tetapi juga dari hatimu yang penuh kasih dan kebaikan. Cara kamu tersenyum dan merawat orang-orang di sekitarmu adalah hal yang luar biasa. Jangan terlalu keras pada dirimu sendiri. Setiap kekurangan yang kamu lihat hanyalah bagian dari keunikanmu. Justru itulah yang membuatmu istimewa! Kamu adalah sosok yang kuat dan inspiratif, dan aku sangat mengagumi semua yang kamu lakukan.</p>
                 </div>
                 <br>
                 <div class="elementJudul">
@@ -299,7 +303,8 @@
                 <div class="elementAbout">
                     <img src="assets/img/1ed18378-fce3-4e70-aa9f-ac85ba8a8f60-removebg-preview.png" alt="">
                     <img src="assets/img/need_this__-removebg-preview.png" alt="">
-                    <img src="assets/img/Tasty_Noodle_with_Egg_and_Mushrooms_HD_Transparent_PNG-removebg-preview.png" alt="">
+                    <img src="assets/img/Tasty_Noodle_with_Egg_and_Mushrooms_HD_Transparent_PNG-removebg-preview.png"
+                        alt="">
                     <img src="assets/img/dudul_anak_band-removebg-preview.png" alt="">
                     <img src="assets/img/fadc6f62-8c78-4504-a7e7-1cce96af37e1-removebg-preview.png" alt="">
                 </div>
@@ -310,6 +315,19 @@
             </div>
         </div>
     </section>
+
+    <section class="myWorld">
+        <div class="container">
+            <h1 style="font-size: 20px;">Jawab sejujur jujur nya</h1>
+            <br>
+            <div id="question-container">
+                <p id="question">Apakah kamu menyukainya?</p>
+                    <button class="answer-btn" onclick="handleAnswer('yes')">Ya</button>
+                    <button class="answer-btn" onclick="handleAnswer('no')">Tidak</button>
+            </div>
+        </div>
+    </section>
+
 
 </body>
 

@@ -1,145 +1,88 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuis Sederhana</title>
+    <title>Aplikasi Musik dengan Fade In dan Fade Out</title>
     <style>
+        /* Styling untuk konteks */
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
         }
 
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
 
-        h1 {
-            text-align: center;
-        }
-
-        .question {
-            margin-bottom: 20px;
-        }
-
-        .options {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .options li {
-            margin: 10px 0;
+        audio {
+            display: none; /* Sembunyikan kontrol audio default */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Kuis Sederhana</h1>
-        <div id="quiz-container"></div>
-        <button id="submit-btn">Kirim Jawaban</button>
-        <div id="result-container"></div>
-    </div>
+    <header>
+        <button id="playPauseButton">Play</button>
+    </header>
+    <main>
+        <!-- Tag audio dengan placeholder audio -->
+        <audio id="musicPlayer" preload="none">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+    </main>
 
     <script>
-        // Data kuis yang berisi pertanyaan dan jawaban
-        const quizData = [
-            {
-                question: "Siapa penemu lampu pijar?",
-                a: "Alexander Graham Bell",
-                b: "Thomas Edison",
-                c: "Nikola Tesla",
-                d: "Albert Einstein",
-                correct: "b" // Jawaban yang benar
-            },
-            {
-                question: "Apa ibu kota Indonesia?",
-                a: "Jakarta",
-                b: "Bandung",
-                c: "Surabaya",
-                d: "Medan",
-                correct: "a" // Jawaban yang benar
-            },
-            {
-                question: "Berapa jumlah planet di tata surya?",
-                a: "7",
-                b: "8",
-                c: "9",
-                d: "10",
-                correct: "b" // Jawaban yang benar
+        document.addEventListener('DOMContentLoaded', () => {
+            const audioPlayer = document.getElementById('musicPlayer');
+            const playPauseButton = document.getElementById('playPauseButton');
+            
+            let fadeOutInterval;
+            let fadeInInterval;
+
+            // Fungsi untuk fade in
+            function fadeIn() {
+                let fadeInVolume = 0; // Volume awal
+                audioPlayer.volume = 0; // Set volume ke 0 sebelum mulai
+
+                const fadeInInterval = setInterval(() => {
+                    if (fadeInVolume < 1) {
+                        fadeInVolume += 0.05; // Tambah volume
+                        audioPlayer.volume = Math.min(fadeInVolume, 1); // Pastikan volume tidak lebih dari 1
+                    } else {
+                        clearInterval(fadeInInterval); // Hentikan interval jika volume sudah mencapai 1
+                    }
+                }, 20); // Update setiap 100ms
             }
-        ];
 
-        // Mengambil elemen dari DOM
-        const quizContainer = document.getElementById('quiz-container'); // Tempat untuk menampilkan pertanyaan
-        const submitBtn = document.getElementById('submit-btn'); // Tombol untuk mengirim jawaban
-        const resultContainer = document.getElementById('result-container'); // Tempat untuk menampilkan hasil
-
-        let currentQuestionIndex = 0; // Indeks pertanyaan saat ini
-        let score = 0; // Skor pengguna
-
-        // Fungsi untuk memuat pertanyaan ke dalam kuis
-        function loadQuiz() {
-            const currentQuizData = quizData[currentQuestionIndex]; // Mengambil data pertanyaan saat ini
-            
-            // Mengisi konten kuis dengan pertanyaan dan pilihan jawaban
-            quizContainer.innerHTML = `
-                <div class="question">${currentQuizData.question}</div>
-                <ul class="options">
-                    <li><input type="radio" name="answer" value="a"> ${currentQuizData.a}</li>
-                    <li><input type="radio" name="answer" value="b"> ${currentQuizData.b}</li>
-                    <li><input type="radio" name="answer" value="c"> ${currentQuizData.c}</li>
-                    <li><input type="radio" name="answer" value="d"> ${currentQuizData.d}</li>
-                </ul>
-            `;
-        }
-
-        // Fungsi untuk mendapatkan jawaban yang dipilih oleh pengguna
-        function getSelectedAnswer() {
-            const answers = document.querySelectorAll('input[name="answer"]'); // Mengambil semua input radio
-            
-            // Memeriksa setiap input radio untuk melihat mana yang dipilih
-            for (const answer of answers) {
-                if (answer.checked) {
-                    return answer.value; // Mengembalikan nilai jawaban yang dipilih
-                }
-            }
-            
-            return null; // Jika tidak ada jawaban yang dipilih, kembalikan null
-        }
-
-        // Menambahkan event listener pada tombol kirim jawaban
-        submitBtn.addEventListener('click', () => {
-            const answer = getSelectedAnswer(); // Mendapatkan jawaban yang dipilih
-            
-            if (answer) { // Memeriksa apakah ada jawaban yang dipilih
-                if (answer === quizData[currentQuestionIndex].correct) { // Memeriksa apakah jawaban benar
-                    score++; // Menambah skor jika jawaban benar
-                }
-                
-                currentQuestionIndex++; // Pindah ke pertanyaan berikutnya
-                
-                if (currentQuestionIndex < quizData.length) { // Memeriksa apakah masih ada pertanyaan tersisa
-                    loadQuiz(); // Memuat pertanyaan berikutnya
+            playPauseButton.addEventListener('click', () => {
+                if (audioPlayer.paused) {
+                    audioPlayer.play();
+                    fadeIn(); // Panggil fungsi fade in saat play
+                    playPauseButton.textContent = 'Pause';
                 } else {
-                    // Menampilkan hasil akhir setelah semua pertanyaan dijawab
-                    resultContainer.innerHTML = `<h2>Anda mendapatkan ${score} dari ${quizData.length} jawaban benar!</h2>`;
-                    submitBtn.style.display = 'none'; // Menyembunyikan tombol kirim setelah kuis selesai
-                    quizContainer.style.display = 'none'; // Menyembunyikan kontainer kuis setelah kuis selesai
-                }
-            } else {
-                alert("Silakan pilih jawaban!"); // Peringatan jika tidak ada jawaban yang dipilih
-            }
-        });
+                    let fadeOutVolume = 1; // Volume awal
+                    clearInterval(fadeOutInterval);
 
-        // Memuat pertanyaan pertama saat halaman dimuat
-        loadQuiz();
+                    fadeOutInterval = setInterval(() => {
+                        if (fadeOutVolume > 0) {
+                            fadeOutVolume -= 0.05; // Kurangi volume
+                            audioPlayer.volume = Math.max(fadeOutVolume, 0);
+                        } else {
+                            clearInterval(fadeOutInterval);
+                            audioPlayer.pause(); // Pause audio
+                            playPauseButton.textContent = 'Play'; // Ubah teks tombol
+                        }
+                    }, 20); // Update setiap 100ms
+                }
+            });
+        });
     </script>
 </body>
 </html>
