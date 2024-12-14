@@ -115,7 +115,7 @@ body{
 .home-section{
     width: 100vw;
     height: 100vh;
-    display: none;
+    display: flex;
     background: url(assets/img/bg-section.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -186,7 +186,7 @@ nav ul li, a{
 .gallery-section{
     width: 100vw;
     justify-content: center;
-    display: none;
+    display: flex;
     background-image: url(assets/img/bg-gallery.jpeg);
 
 }
@@ -394,7 +394,7 @@ nav ul li, a{
 
 /* Confession */
 .confession-section{
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -527,7 +527,7 @@ nav ul li, a{
     background-image: url(assets/img/589de158-8f51-4b92-9be9-82fc7c0c8584.jpeg);
     background-size: cover;
     width: 100vw;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -668,7 +668,7 @@ nav ul li, a{
     color: black;
 }
 
-.container {
+.myWorld .container {
     background-color: white;
     display: flex;
     align-items: center;
