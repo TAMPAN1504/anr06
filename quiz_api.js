@@ -3,7 +3,8 @@ function finishQuiz() {
     const score = calculateScore(); // Fungsi untuk menghitung skor
     const answers = collectAnswers(); // Fungsi untuk mengumpulkan jawaban
 
-    fetch('save_results.php', {
+    fetch('http://localhost/quiz_app/save_results.php', {
+
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
