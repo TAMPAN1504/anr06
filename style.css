@@ -673,8 +673,7 @@ nav ul li, a{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40%;
-    padding: 10px;
+    height: 45%;
     flex-direction: column;
     border: 1px solid var(--main-color);
 }
@@ -697,4 +696,12 @@ nav ul li, a{
 
 .answer-btn:hover {
     background-color: #2980b9;
+}
+
+.myWorld .container #question-container{
+    width: 100%;
+}
+
+.myWorld .container img{
+    width: 100px;
 }
