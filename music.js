@@ -48,8 +48,13 @@ function openLightbox(image) {
 
 function closeLightbox() {
     const lightbox = document.querySelector(".lightbox");
-    laguPlayer.pause();
     lightbox.style.display = "none"; // Sembunyikan lightbox
+    const konfirm = confirm("Aurell pengen lagu nya di setel di background? \nOke = Iya \nBatal = Tidak");
+    if(konfirm === true){
+        laguPlayer.play();
+    }else{
+        laguPlayer.pause();
+    }
 };
 
 const playPause = () =>{

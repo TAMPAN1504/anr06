@@ -604,10 +604,18 @@ nav ul li, a{
     padding: 5px;
     border-radius: 50px;
     color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 90px;
     font-size: 10px;
     border: 1px solid black;
     text-align: center;
+}
+
+.aboutYou-card .favItem .words p{
+    font-size: 9px;
 }
 
 .aboutYou-card .paragraph{
@@ -704,4 +712,74 @@ nav ul li, a{
 
 .myWorld .container img{
     width: 100px;
+}
+
+.countdown{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    color: white;
+    background-image: url(assets/img/b190280d-9ddf-453c-bc4d-5181b88834dd.jpeg);
+    background-size: cover;
+    background-position-x: -20px;
+}
+.countdown .container-waktu{
+    display: flex;
+    width: 80%;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.countdown .container-waktu .container-time{
+    background-color: rgba(236, 236, 236, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+}
+
+.countdown .judul{
+    font-size: 10px;
+    color: white;
+}
+
+.countdown .readmeItem2{
+    font-size: 0.6rem;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+    margin-top: 20px;
+}
+
+
+.readmeMsg2{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.readmeMsg2 .paper-bg{
+    background-image: url(assets/img/paper-texture.png);
+    height: 50%;
+    width: 80%;
+    position: fixed;
+    background-size: cover;
+    font-family: 'Reenie Beanie';
+    color: var(--dark-color);
+    padding: 10px;
+    text-align: start;
+    border-radius: 5px;
 }
