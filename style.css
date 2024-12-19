@@ -798,7 +798,7 @@ nav ul li, a{
     transition: all 0.25s ease;
     background: radial-gradient(
         65.28% 65.28% at 50% 100%,
-        rgba(223, 113, 255, 0.8) 0%,
+        #00fffb 0%,
         rgba(223, 113, 255, 0) 100%
       ),
       linear-gradient(0deg, #009b98, #00fffb);

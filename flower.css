@@ -21,7 +21,7 @@ body {
 }
 
 .night {
-  position: fixed;
+  position: absolute;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
@@ -33,7 +33,7 @@ body {
 
 .flowers {
   position: relative;
-  transform: scale(2.6);
+  transform: scale(2);
 }
 
 .flower {
