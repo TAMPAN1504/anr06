@@ -91,3 +91,12 @@ document.querySelector(".readmeMsg2").addEventListener("click", () =>{
         document.querySelector(".readmeMsg2").style.display = "none";
     }
     });
+
+
+function warningSwitch(){
+    document.querySelector(".warning-general").style.display="block";
+};
+
+function cancelWarning(){
+    document.querySelector(".warning-general").style.display="none";
+}
