@@ -724,7 +724,7 @@ nav ul li, a{
     gap: 10px;
     align-items: center;
     color: white;
-    background-image: url(assets/img/b190280d-9ddf-453c-bc4d-5181b88834dd.jpeg);
+    background-image: radial-gradient(ellipse at top, transparent 0%, rgba(0, 0, 0, 0.248)), radial-gradient(ellipse at bottom, black, rgba(145, 233, 255, 0.2)), repeating-linear-gradient(220deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, black 0px, black 19px, transparent 19px, transparent 22px), linear-gradient(90deg, #00fffa, #f0f0f0);
     background-size: cover;
     background-position-x: -20px;
 }
