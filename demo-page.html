@@ -3,86 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Musik dengan Fade In dan Fade Out</title>
+    <title>3D Moving Text</title>
     <style>
-        /* Styling untuk konteks */
+        /* Style dasar */
         body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111;
+            overflow: hidden;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style teks */
+        .text-container {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
+            width: 100vw;
+            font-size: 1rem;
+            text-align: center;
+            font-weight: bold;
+            perspective: 1000px;
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+        /* Style untuk setiap teks */
+        .text {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            text-align: center;
+            animation: moveZ 1s 1s forwards, fadeOut 2s forwards;
+            opacity: 0;
         }
 
-        audio {
-            display: none; /* Sembunyikan kontrol audio default */
+        /* Animasi mendekat ke kamera di sumbu Z */
+        @keyframes moveZ {
+            0% {
+                transform: translateZ(-800px) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: translateZ(1000) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateZ(1000px) scale(5);
+                opacity: 0;
+            }
+        }
+
+        /* Animasi fade in */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Teks kedua muncul setelah delay */
+        .text2 {
+            animation: moveZ 1s 2s forwards, fadeOut 3s 3s forwards;
+            opacity: 0;
+        }
+        .text3 {
+            animation: moveZ 1s 3s forwards, fadeOut 3s 3s forwards;
+            opacity: 0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <button id="playPauseButton">Play</button>
-    </header>
-    <main>
-        <!-- Tag audio dengan placeholder audio -->
-        <audio id="musicPlayer" preload="none">
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const audioPlayer = document.getElementById('musicPlayer');
-            const playPauseButton = document.getElementById('playPauseButton');
-            
-            let fadeOutInterval;
-            let fadeInInterval;
-
-            // Fungsi untuk fade in
-            function fadeIn() {
-                let fadeInVolume = 0; // Volume awal
-                audioPlayer.volume = 0; // Set volume ke 0 sebelum mulai
-
-                const fadeInInterval = setInterval(() => {
-                    if (fadeInVolume < 1) {
-                        fadeInVolume += 0.05; // Tambah volume
-                        audioPlayer.volume = Math.min(fadeInVolume, 1); // Pastikan volume tidak lebih dari 1
-                    } else {
-                        clearInterval(fadeInInterval); // Hentikan interval jika volume sudah mencapai 1
-                    }
-                }, 20); // Update setiap 100ms
-            }
-
-            playPauseButton.addEventListener('click', () => {
-                if (audioPlayer.paused) {
-                    audioPlayer.play();
-                    fadeIn(); // Panggil fungsi fade in saat play
-                    playPauseButton.textContent = 'Pause';
-                } else {
-                    let fadeOutVolume = 1; // Volume awal
-                    clearInterval(fadeOutInterval);
-
-                    fadeOutInterval = setInterval(() => {
-                        if (fadeOutVolume > 0) {
-                            fadeOutVolume -= 0.05; // Kurangi volume
-                            audioPlayer.volume = Math.max(fadeOutVolume, 0);
-                        } else {
-                            clearInterval(fadeOutInterval);
-                            audioPlayer.pause(); // Pause audio
-                            playPauseButton.textContent = 'Play'; // Ubah teks tombol
-                        }
-                    }, 20); // Update setiap 100ms
-                }
-            });
-        });
-    </script>
+    <!-- Kontainer teks -->
+    <div class="text-container">
+        <div class="text" id="text1"><p>Come on</p></div>
+        <div class="text text2" id="text2"><p>Come on</p></div>
+        <div class="text text3" id="text3"><p>Come on</p></div>
+    </div>
 </body>
 </html>
