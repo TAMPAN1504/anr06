@@ -731,8 +731,8 @@ nav ul li, a{
 .countdown .container-waktu{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    width: 80%;
+    gap: 5px;
+    width: 90%;
     text-align: center;
     justify-content: space-around;
 }
