@@ -729,10 +729,11 @@ nav ul li, a{
     background-position-x: -20px;
 }
 .countdown .container-waktu{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
     width: 80%;
     text-align: center;
-    display: flex;
     justify-content: space-around;
 }
 
