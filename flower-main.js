@@ -101,4 +101,21 @@ document.addEventListener("DOMContentLoaded", () => {
       showNextLyric();
     });
   });
+
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const typingText = document.querySelector(".neon-typing");
+    const img = document.querySelector(".img");
+  
+    // Total delay 6 detik sebelum animasi dimulai
+    setTimeout(() => {
+      typingText.style.opacity = 1; // Menampilkan teks
+      typingText.classList.add("start-typing"); // Mulai animasi typing
+  
+      img.style.opacity = 1; // Menampilkan gambar
+      img.classList.add("start-img"); // Mulai animasi gambar
+    }, 23000); // Delay 6 detik
+  });
+  
   

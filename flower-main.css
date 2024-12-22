@@ -1,7 +1,84 @@
+/* Neon style */
+.neon-typing {
+    font-family: 'Reenie Beanie', sans-serif;
+    font-size: 3rem;
+    color: white; /* Warna teks utama */
+    text-shadow: 0 0 5px #00fffa, 
+                 0 0 10px #00fffa,
+                 0 0 15px #00fffa;
+             /* Efek neon */
+    white-space: nowrap; /* Untuk teks typing */
+    width: 100%;
+    overflow: hidden; /* Sembunyikan teks di luar area */
+    border-right: 2px solid #00fffa; /* Efek cursor */
+    opacity: 0;
+  }
+
+/* Teks */
+.start-typing {
+    animation: typing 4s steps(38), blink-caret 0.75s step-end infinite alternate;
+  }
+  
+  /* Gambar */
+.start-img {
+    animation: slideUp 1s ease-out 0s 1 normal none, fadeInImg 2s ease 0s 1 normal none;
+  }
+  
+
+  @font-face {
+    font-family: Reenie Beanie;
+    src: url(assets/font/0b30a44b5eb1a594-s.p.woff2) format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+  
+  /* Animasi typing */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+
+  }
+  
+  /* Animasi cursor berkedip */
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #00fffa;
+    }
+  }
+
+  /* Copy this code after the above code */
+@keyframes slideUp {
+    0% {
+      transform: translateY(150px);
+    }
+  
+    100% {
+      transform: translateY(-5px);
+    }
+  }
+
+@keyframes fadeInImg {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+  
+
+
 .night {
     color: white;
     font-size: 4rem;
     display: flex;
+    flex-direction: column;
+    gap: 50px;
     justify-content: center;
     text-align: center;
     font-family: sans-serif;
@@ -9,9 +86,29 @@
     align-items: center;
 }
 
-.night .text {
-    opacity: 0.1;
+.night .img{
+    border: 5px solid white;
+    box-shadow: 0 0 5px #00fffa, 0 0 10px #00fffa, 0 0 15px #00fffa;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 200px;
+    transform: translateY(-5px);
+    opacity: 0;
+    /* animation: slideUp 1s ease-out 0s 1 normal none, fadeInImg 1s ease 0s 1 normal none; */
+
 }
+
+.night .img img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 200px;
+}
+
+
+
 
 .first-load{
     font-family: Arial, sans-serif;
@@ -27,8 +124,8 @@
 
 #main-content{
     display: none;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     align-items: flex-end;
     justify-content: center;
 }
