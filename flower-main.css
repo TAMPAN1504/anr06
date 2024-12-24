@@ -115,6 +115,7 @@
 
 .first-load{
     font-family: Arial, sans-serif;
+    position: absolute;
     height: 100%;
     width: 100%;
     background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), repeating-linear-gradient(220deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, black 0px, black 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, black 0px, black 19px, transparent 19px, transparent 22px), linear-gradient(90deg, #00fffa, #f0f0f0);
@@ -126,7 +127,7 @@
 }
 
 #main-content{
-    display: flex;
+    display: none;
     width: 100vw;
     height: 100vh;
     justify-content: center;
@@ -258,13 +259,14 @@
 }
 
 .another-content .container .message{
+    background: transparent;
+    backdrop-filter: blur(5px);
     border: 1px solid #00fffb71;
     padding: 20px;
     border-radius: 8px;
-    backdrop-filter: blur(5px);
     font-family: 'Arial';
     letter-spacing: 2px;
     width: 100%;
     display: flex;
-    font-size: 16px;
+    font-size: 48px;
 }
