@@ -5,6 +5,10 @@
     --dark-color: #9b4373;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 @font-face {
     font-family: Reenie Beanie;
     src: url(assets/font/0b30a44b5eb1a594-s.p.woff2) format("woff2");
@@ -1100,4 +1104,45 @@ nav ul li, a{
     width: 100%;
   }
   
-  
+  .playlist{
+    background-image: url(assets/img/b190280d-9ddf-453c-bc4d-5181b88834dd.jpeg);
+    background-size: cover;
+    width: 100vw;
+    height: 140vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .playlist .playlist-container{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  .playlist .playlist-container .playlist-item{
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .playlist .container{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    gap: 5px;
+    width: 90%;
+    border: 2px solid var(--main-color);
+    height: 70%;
+  }
+
+  .playlist .title{
+    color: var(--dark-color);
+  }

@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("DOMContentLoaded", () => {
     const typingText = document.querySelector(".neon-typing");
     const img = document.querySelector(".img");
+    const anotherText = document.querySelector(".another-text")
   
     // Total delay 6 detik sebelum animasi dimulai
     setTimeout(() => {
@@ -116,6 +117,50 @@ document.addEventListener("DOMContentLoaded", () => {
       img.style.opacity = 1; // Menampilkan gambar
       img.classList.add("start-img"); // Mulai animasi gambar
     }, 23000); // Delay 6 detik
+    setTimeout(() => {
+      anotherText.style.opacity = 1;
+      anotherText.classList.add("start-text");
+    }, 26000);
   });
+
+  // Animasi image on scroll
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const slideImages = document.querySelectorAll(".hidden-img");
+  
+    const observerOptions = {
+      root: null, // Pantau viewport
+      threshold: 0.1, // 10% elemen terlihat
+    };
+  
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = `${entry.target.dataset.transform} translateY(-5px)`; // Gabungkan transform asli dengan animasi slideUp
+            entry.target.style.transition = "transform 0.8s ease, opacity 0.8s ease";
+            observer.unobserve(entry.target); // Hentikan pengamatan untuk elemen ini
+          }, index * 500); // Tambahkan jeda bergantian per gambar
+        }
+      });
+    }, observerOptions);
+  
+    slideImages.forEach((image) => {
+      // Simpan transform asli sebagai data atribut
+      const originalTransform = window.getComputedStyle(image).transform || "none";
+      image.dataset.transform = originalTransform;
+  
+      // Reset gaya awal untuk animasi
+      image.style.opacity = "0";
+      image.style.transform = "translateY(150px)"; // Awal slideUp
+      observer.observe(image);
+    });
+  });
+  
+  
+  
+  
+
   
   
