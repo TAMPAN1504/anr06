@@ -5,9 +5,9 @@
     --dark-color: #9b4373;
 }
 
-html{
+/* html{
   scroll-behavior: smooth;
-}
+} */
 
 @font-face {
     font-family: Reenie Beanie;
@@ -1116,33 +1116,83 @@ nav ul li, a{
   }
 
   .playlist .playlist-container{
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-  }
-
-  .playlist .playlist-container .playlist-item{
-    height: 90px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 0 5px;
+    flex-direction: column;
+
+  }
+
+  .playlist .playlist-container .playlist-item{
+    height: 100px;
+    
   }
 
   .playlist .container{
     background-color: white;
     display: flex;
     justify-content: center;
+    padding: 10px;
     flex-direction: column;
     align-items: center;
     color: black;
     gap: 5px;
-    width: 90%;
+    width: 95%;
     border: 2px solid var(--main-color);
-    height: 70%;
   }
 
   .playlist .title{
     color: var(--dark-color);
+  }
+
+  .playlist .btn button{
+    background-color: var(--main-color);
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+
+  }
+
+  .gameWeb{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(flappy-bird/flappybirdbg.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .gameWeb .container{
+    width: 90%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .gameWeb .game-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    
+  }
+  .gameWeb .game-container img {
+    width: 150px;
+    aspect-ratio: 6/4;
+    object-position: 50% 10%;
+    object-fit: cover;
+    filter: grayscale(1);
+    border-radius: 8px;
+    transition: transform 0.3s, filter 0.3s
+  }
+
+  .gameWeb .game-container img:hover{
+    transform: scale(1.10);
+    filter: grayscale(0);
   }

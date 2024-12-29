@@ -100,3 +100,19 @@ function warningSwitch(){
 function cancelWarning(){
     document.querySelector(".warning-general").style.display="none";
 }
+
+// KODE SEMENTARA !!!
+
+// Simpan posisi scroll sebelum refresh
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("scrollPosition", window.scrollY);
+  });
+  
+  // Ambil dan tetapkan posisi scroll setelah halaman dimuat
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollPosition = localStorage.getItem("scrollPosition");
+    if (scrollPosition) {
+      window.scrollTo(0, parseInt(scrollPosition));
+    }
+  });
+  
