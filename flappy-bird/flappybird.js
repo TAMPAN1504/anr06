@@ -31,12 +31,15 @@ let topPipeImg;
 let bottomPipeImg;
 
 //physics
-let velocityX = -2; //pipes moving left speed
+let velocityX = -3; //pipes moving left speed
 let velocityY = 0; //bird jump speed
 let gravity = 0.6;
 
 let gameOver = false;
 let score = 0;
+
+let wingSound = new Audio("./sfx_wing.wav");
+let pointSound = new Audio("./sfx_point.wav");
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -62,7 +65,7 @@ window.onload = function() {
     bottomPipeImg.src = "./bottompipe.png";
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 3000); //every 1.5 seconds
+    setInterval(placePipes, 2000); //every 1.5 seconds
     document.addEventListener("keydown", moveBird);
 }
 
@@ -91,6 +94,7 @@ function update() {
 
         if (!pipe.passed && bird.x > pipe.x + pipe.width) {
             score += 0.5; //0.5 because there are 2 pipes! so 0.5*2 = 1, 1 for each set of pipes
+            pointSound.play();
             pipe.passed = true;
         }
 
@@ -161,6 +165,7 @@ function moveBird() {
 // Event listener untuk keyboard (desktop)
 document.addEventListener("keydown", (e) => {
     if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyX") {
+        wingSound.play();
         moveBird();
     }
 });
@@ -168,6 +173,7 @@ document.addEventListener("keydown", (e) => {
 // Event listener untuk layar sentuh (mobile)
 document.addEventListener("touchstart", (e) => {
     e.preventDefault(); // Mencegah scroll
+    wingSound.play();
     moveBird();
 });
 
@@ -176,6 +182,7 @@ document.addEventListener("mousedown", (e) => {
     // Mendeteksi klik kiri atau kanan
     if (e.button === 0 || e.button === 2) {
         e.preventDefault(); // Opsional, mencegah event default klik kanan
+        wingSound.play();
         moveBird();
     }
 });
