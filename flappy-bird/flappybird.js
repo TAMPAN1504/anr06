@@ -1,4 +1,5 @@
 
+
 //board
 let board;
 let boardWidth = 360;
@@ -32,7 +33,7 @@ let bottomPipeImg;
 //physics
 let velocityX = -2; //pipes moving left speed
 let velocityY = 0; //bird jump speed
-let gravity = 0.4;
+let gravity = 0.6;
 
 let gameOver = false;
 let score = 0;
@@ -61,7 +62,7 @@ window.onload = function() {
     bottomPipeImg.src = "./bottompipe.png";
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 1500); //every 1.5 seconds
+    setInterval(placePipes, 3000); //every 1.5 seconds
     document.addEventListener("keydown", moveBird);
 }
 
@@ -145,20 +146,43 @@ function placePipes() {
     pipeArray.push(bottomPipe);
 }
 
-function moveBird(e) {
-    if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
-        //jump
-        velocityY = -6;
-
-        //reset game
-        if (gameOver) {
-            bird.y = birdY;
-            pipeArray = [];
-            score = 0;
-            gameOver = false;
-        }
+function moveBird() {
+    if (gameOver) {
+        bird.y = birdY;
+        pipeArray = [];
+        score = 0;
+        gameOver = false;
     }
+
+    // jump
+    velocityY = -6;
 }
+
+// Event listener untuk keyboard (desktop)
+document.addEventListener("keydown", (e) => {
+    if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyX") {
+        moveBird();
+    }
+});
+
+// Event listener untuk layar sentuh (mobile)
+document.addEventListener("touchstart", (e) => {
+    e.preventDefault(); // Mencegah scroll
+    moveBird();
+});
+
+// Event listener untuk klik mouse (desktop)
+document.addEventListener("mousedown", (e) => {
+    // Mendeteksi klik kiri atau kanan
+    if (e.button === 0 || e.button === 2) {
+        e.preventDefault(); // Opsional, mencegah event default klik kanan
+        moveBird();
+    }
+});
+
+// Mencegah menu klik kanan default (opsional, jika tidak ingin menu muncul saat klik kanan)
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+
 
 function detectCollision(a, b) {
     return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
