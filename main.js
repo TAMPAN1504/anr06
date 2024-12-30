@@ -4,6 +4,9 @@ document.querySelector(".submitBtn").addEventListener("click", function(){
 
     const validName = ["aurellia","nayla","ramadhani", "ella"]
     const isValid = validName.some(name => outputUser.includes(name));
+    var nama = document.querySelector(".namaInput");
+    var nama2 = document.querySelector(".namaInput2");
+    var nama3 = document.querySelector(".namaInput3");
 
     if(isValid){
         var elemen = document.querySelectorAll(".home-section, .gallery-section, .confession-section");
@@ -11,6 +14,9 @@ document.querySelector(".submitBtn").addEventListener("click", function(){
             element.style.display = "flex";
         });
         document.querySelector(".verification-section").style.display = "none";
+        nama.innerHTML = outputUser;
+        nama2.innerHTML = outputUser;
+        nama3.innerHTML = outputUser;
     }else{
         alert("Tolong masukan nama lengkap mu :)")
     }
@@ -35,7 +41,7 @@ document.querySelector(".readmeMsg").addEventListener("click", () =>{
 
 
 // Konfigurasi awal untuk tanggal target (01 Januari 2025)
-const targetDate = new Date('January 1, 2025 00:00:00').getTime();
+const targetDate = new Date('January 01, 2025 00:00:00').getTime();
 let intervalId;
 
 // Fungsi untuk memperbarui timer
@@ -49,7 +55,8 @@ function updateTimer() {
     // Jika waktu sudah mencapai atau melewati target date
     if (diff <= 0) {
         clearInterval(intervalId);
-        document.querySelector('.countdown').innerHTML = '<button onclick="alert(\'Tombol Kosong!\')">Tombol Kosong!</button>';
+        document.getElementById("finalButton").style.display="block";
+        document.querySelector(".readmeItem2").style.display="none";
         return;
     }
 
@@ -93,6 +100,21 @@ document.querySelector(".readmeMsg2").addEventListener("click", () =>{
     });
 
 
+document.querySelector(".readmeItem3").addEventListener("click", () =>{
+    document.querySelector("#paperSfx").load();
+    document.querySelector("#paperSfx").play();
+    document.querySelector(".readmeMsg3").style.display = "flex";
+});
+
+document.querySelector(".readmeMsg3").addEventListener("click", () =>{
+    if (event.target !== document.querySelector(".paper-bg")) {
+        document.querySelector("#paperSfx").load();
+        document.querySelector("#paperSfx").play();
+        document.querySelector(".readmeMsg3").style.display = "none";
+    }
+    });
+
+
 function warningSwitch(){
     document.querySelector(".warning-general").style.display="block";
 };
@@ -104,15 +126,15 @@ function cancelWarning(){
 // KODE SEMENTARA !!!
 
 // Simpan posisi scroll sebelum refresh
-window.addEventListener("beforeunload", () => {
-    localStorage.setItem("scrollPosition", window.scrollY);
-  });
+// window.addEventListener("beforeunload", () => {
+//     localStorage.setItem("scrollPosition", window.scrollY);
+//   });
   
-  // Ambil dan tetapkan posisi scroll setelah halaman dimuat
-  document.addEventListener("DOMContentLoaded", () => {
-    const scrollPosition = localStorage.getItem("scrollPosition");
-    if (scrollPosition) {
-      window.scrollTo(0, parseInt(scrollPosition));
-    }
-  });
+//   // Ambil dan tetapkan posisi scroll setelah halaman dimuat
+//   document.addEventListener("DOMContentLoaded", () => {
+//     const scrollPosition = localStorage.getItem("scrollPosition");
+//     if (scrollPosition) {
+//       window.scrollTo(0, parseInt(scrollPosition));
+//     }
+//   });
   

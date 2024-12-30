@@ -5,9 +5,9 @@
     --dark-color: #9b4373;
 }
 
-/* html{
+ html{
   scroll-behavior: smooth;
-} */
+} 
 
 @font-face {
     font-family: Reenie Beanie;
@@ -37,7 +37,7 @@ body{
     width: 100vw;
     height: 100vh;
     background-color: var(--main-color);
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -126,6 +126,31 @@ body{
     background-position: center;
     transition: 1s;
 }
+
+.readmeMsg3{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.readmeMsg3 .paper-bg{
+  background-image: url(assets/img/paper-texture.png);
+  height: 50%;
+  width: 80%;
+  position: fixed;
+  background-size: cover;
+  color: var(--dark-color);
+  padding: 10px;
+  text-align: start;
+  border-radius: 5px;
+}
+
 header{
     width: 100vw;
     text-align: center;
@@ -197,6 +222,7 @@ nav ul li, a{
     background-image: url(assets/img/bg-gallery.jpeg);
 
 }
+
 .gallery-section .container{
     margin-top: 100px;
     display: flex;
@@ -688,7 +714,8 @@ nav ul li, a{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 45%;
+    height: 90%;
+    width: 95%;
     flex-direction: column;
     border: 1px solid var(--main-color);
 }
@@ -1172,16 +1199,22 @@ nav ul li, a{
 
   .gameWeb .container{
     width: 90%;
-    height: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: white;
+    border: 2px solid var(--main-color);
+    gap: 20px;
+    color: var(--dark-color);
+    padding: 25px;
+    border-radius: 10px;
 
   }
 
   .gameWeb .game-container{
     display: grid;
+    
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     
@@ -1199,4 +1232,15 @@ nav ul li, a{
   .gameWeb .game-container img:hover{
     transform: scale(1.10);
     filter: grayscale(0);
+  }
+  .gameWeb .atribut{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+  }
+  .gameWeb .atribut img{
+    width: 50px;
+  }
+  #finalButton{
+    display: none;
   }
