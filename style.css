@@ -275,7 +275,7 @@ nav ul li, a{
     background-color: white;
     border-radius: 20px;
     width: 90vw;
-    z-index: 10002;
+    z-index: 100;
     font-size: 14px;
     font-family: 'Gloria Hallelujah';
     font-weight: 800;
@@ -321,6 +321,7 @@ nav ul li, a{
     display: none;
     align-items: center;
     position: fixed;
+    z-index: 1000;
     flex-direction: column;
     top: 0;
     color: white;
