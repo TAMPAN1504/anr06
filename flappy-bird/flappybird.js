@@ -40,6 +40,7 @@ let score = 0;
 
 let wingSound = new Audio("./sfx_wing.wav");
 let pointSound = new Audio("./sfx_point.wav");
+let bgm = new Audio("./bgm_pou.mp3")
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -167,6 +168,7 @@ document.addEventListener("keydown", (e) => {
     if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyX") {
         wingSound.play();
         moveBird();
+        bgm.play();
     }
 });
 
@@ -175,6 +177,7 @@ document.addEventListener("touchstart", (e) => {
     e.preventDefault(); // Mencegah scroll
     wingSound.play();
     moveBird();
+    bgm.play();
 });
 
 // Event listener untuk klik mouse (desktop)
@@ -184,6 +187,7 @@ document.addEventListener("mousedown", (e) => {
         e.preventDefault(); // Opsional, mencegah event default klik kanan
         wingSound.play();
         moveBird();
+        bgm.play();
     }
 });
 
